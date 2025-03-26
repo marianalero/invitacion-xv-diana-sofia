@@ -6,6 +6,7 @@
 		pair = pair.split("=");
 		params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);});
 	console.log("se entro a la invitacion",params.number)
+	console.log("se entro a la invitacion",params.type)
 		var number =(params.number == undefined )?0:params.number
 		var pases = (number == 1) ? " pase" : " pases";
 	document.getElementById("numInv").innerHTML = "Esta invitación es valida por "+ number+ pases;
@@ -376,16 +377,30 @@
 		$('#asistire').prop('checked',true);
 	
 		var myModal = new bootstrap.Modal(document.getElementById('exampleModal'))
-		myModal.show()
+		if(params.type == undefined){
+			myModal.show()
 		
 		$("#btnEntrar").click(function(){
 			myModal.hide()
 			let btn = document.querySelector(".btn-flotante")
 			btn.click();
 		});
+		}
+		
 
 		for (var i = 0; i <= number; i++) {
 			$('#selNumInv').append('<option value="'+i+'">'+i+'</option>');
+		}
+
+		console.log(params.type)
+		if(params.type != undefined && params.type==2){
+			$('#principal').hide();
+			$('.img-enmedio').hide();
+			$('#padres').hide();
+			$('#qbootstrap-countdown').hide();
+			$('#padrinos').hide();
+			$('#intinerario').hide();
+			$('#regalo').hide();
 		}
 	});
 
