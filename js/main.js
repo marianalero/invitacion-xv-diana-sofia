@@ -338,8 +338,35 @@
 			confirmText = "No Asistiré";
 			selNumInv =0;
 		}
-		//https://docs.google.com/forms/d/e/1FAIpQLSeItwcMn234oWm5_u4TQQyB85_K4E_576p78D1bv1bfLMmW_A/viewform?usp=pp_url&entry.516140191=mariana&entry.1599079301=si&entry.465259973=2
-		let url = "https://docs.google.com/forms/d/e/1FAIpQLSeItwcMn234oWm5_u4TQQyB85_K4E_576p78D1bv1bfLMmW_A/formResponse?entry.516140191="+name+"&entry.1599079301="+confirmText+"&entry.465259973="+selNumInv+'&submit=Submit';
+		//https://docs.google.com/forms/d/e/1FAIpQLSeItwcMn234oWm5_u4TQQyB85_K4E_576p78D1bv1bfLMmW_A/viewform?usp=pp_url&entry.516140191=mariana&entry.1599079301=si&entry.465259973=5&entry.2089029535=nombre+1&entry.525680749=nombre+2&entry.928757313=Acompa%C3%B1ante+3&entry.206608983=Acompa%C3%B1ante+4&entry.166202807=Acompa%C3%B1ante+5&entry.317520913=Acompa%C3%B1ante+6
+		var url = "https://docs.google.com/forms/d/e/1FAIpQLSeItwcMn234oWm5_u4TQQyB85_K4E_576p78D1bv1bfLMmW_A/formResponse?entry.516140191="+name+"&entry.1599079301="+confirmText+"&entry.465259973="+selNumInv+'&submit=Submit';
+		
+
+		if(selNumInv>1){
+			for (var i = 1; i <= number; i++) {
+				switch(i){
+					case 1:
+					url+="&entry.2089029535="+document.getElementById("name1").value;
+					break;
+					case 2:
+					url+="&entry.525680749="+document.getElementById("name2").value;
+					break;
+					case 3:
+					url+="&entry.928757313="+document.getElementById("name3").value;
+					break;
+					case 4:
+					url+="&entry.206608983="+document.getElementById("name4").value;
+					break;
+					case 5:
+					url+="&entry.166202807="+document.getElementById("name5").value;
+					break;
+					case 6:
+					url+="&entry.317520913="+document.getElementById("name6").value;
+					break;
+				}
+			}
+		}
+		
 		console.log(url);
 		fetch(url, { method: 'GET', 
 		mode: "no-cors", // apparently Google will only submit a form if "mode" is "no-cors"
@@ -358,7 +385,14 @@
 		
 	
 	}
-
+	$('#selNumInv').on('change', function() {
+		$('#acompañantes').empty();
+		if(this.value != undefined && this.value >1){
+			for (var i = 1; i <= this.value-1; i++) {
+				$('#acompañantes').append('<div class="col col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 10px;"><input type="name" class="form-control"   id="name'+i+'" placeholder="Acompañante '+i+'"></div>');
+			}
+		}
+	  });
 	// Document on load.
 	$(function(){
 		
@@ -392,7 +426,8 @@
 			$('#selNumInv').append('<option value="'+i+'">'+i+'</option>');
 		}
 
-		console.log(params.type)
+		
+		
 		if(params.type != undefined && params.type==2){
 			$('#principal').hide();
 			$('.img-enmedio').hide();
