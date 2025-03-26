@@ -1666,7 +1666,11 @@ h1, h2, h3, h4, h5, h6 {
   /* border: 1px solid black; */
  
 }
-
+.btn.btn-confirm:focus {
+  color: #afd1fa;
+  /* border: 1px solid black; */
+ 
+}
 .btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus {
   background-color: initial;
   background-position: 0 0;

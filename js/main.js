@@ -343,7 +343,7 @@
 		
 
 		if(selNumInv>1){
-			for (var i = 1; i <= selNumInv; i++) {
+			for (var i = 1; i <= selNumInv-1; i++) {
 				switch(i){
 					case 1:
 					url+="&entry.2089029535="+document.getElementById("name1").value;
