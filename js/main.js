@@ -343,7 +343,7 @@
 		
 
 		if(selNumInv>1){
-			for (var i = 1; i <= number; i++) {
+			for (var i = 1; i <= selNumInv; i++) {
 				switch(i){
 					case 1:
 					url+="&entry.2089029535="+document.getElementById("name1").value;
@@ -389,7 +389,7 @@
 		$('#acompañantes').empty();
 		if(this.value != undefined && this.value >1){
 			for (var i = 1; i <= this.value-1; i++) {
-				$('#acompañantes').append('<div class="col col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 10px;"><input type="name" class="form-control"   id="name'+i+'" placeholder="Acompañante '+i+'"></div>');
+				$('#acompañantes').append('<div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 10px;"><input type="name" class="form-control"   id="name'+i+'" placeholder="Acompañante '+i+'"></div>');
 			}
 		}
 	  });
